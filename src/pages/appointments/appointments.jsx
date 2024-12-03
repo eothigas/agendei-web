@@ -58,7 +58,7 @@ function Appointments(){
 
         <div>
 
-            <table class="table table-hover">
+            <table className="table table-hover">
                 
                 <thead>
                     <tr>

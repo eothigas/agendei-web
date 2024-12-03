@@ -2,55 +2,55 @@ export const doctors = [
     {
         id_doctor: 1,
         name: "Dr. Armando Matheus",
-        specialty: "Ginecologia e obstetrícia",
+        speciality: "Ginecologia e obstetrícia",
         icon: "M"
     },
     {
         id_doctor: 2,
         name: "Dra. Ana Beatriz Rutini",
-        specialty: "Cardiologista",
+        speciality: "Cardiologista",
         icon: "F"
     },
     {
         id_doctor: 3,
         name: "Dr. Antônio Almeida Souza ",
-        specialty: "Pediatria",
+        speciality: "Pediatria",
         icon: "M"
     },
     {
         id_doctor: 4,
         name: "Dra. Roberta Martins",
-        specialty: "Clínica Geral",
+        speciality: "Clínica Geral",
         icon: "F"
     },
     {
         id_doctor: 5,
         name: "Dra. Nise da Silveira",
-        specialty: "Cirurgia Plástica",
+        speciality: "Cirurgia Plástica",
         icon: "F"
     },
     {
         id_doctor: 6,
         name: "Dr. Jonatan Silvestre",
-        specialty: "Pediatria",
+        speciality: "Pediatria",
         icon: "M"
     },
     {
         id_doctor: 7,
         name: "Dr. José Eduardo Souza",
-        specialty: "Clínica Geral",
+        speciality: "Clínica Geral",
         icon: "M"
     },
     {
         id_doctor: 8,
         name: "Dra. Adriana Melo",
-        specialty: "Clínica Geral",
+        speciality: "Clínica Geral",
         icon: "F"
     },
     {
         id_doctor: 9,
         name: "Dra. Valeria Petri",
-        specialty: "Cirurgia Plástica",
+        speciality: "Cirurgia Plástica",
         icon: "F"
     }
 
@@ -61,7 +61,7 @@ export const appointments = [
         id_appointment: 1,
         service: "Consulta",
         doctor: "Dra. Nise da Silveira",
-        specialty: "Cirurgia Plástica",
+        speciality: "Cirurgia Plástica",
         booking_date: "2024-10-25",
         booking_hour: "08:30",
     },
@@ -69,7 +69,7 @@ export const appointments = [
         id_appointment: 2,
         service: "Consulta",
         doctor: "Dr. Antônio Almeida Souza",
-        specialty: "Pediatria",
+        speciality: "Pediatria",
         booking_date: "2024-10-28",
         booking_hour: "15:40",
     },
@@ -77,7 +77,7 @@ export const appointments = [
         id_appointment: 3,
         service: "Consulta",
         doctor: "Dra. Roberta Martins",
-        specialty: "Clínica Geral",
+        speciality: "Clínica Geral",
         booking_date: "2024-11-05",
         booking_hour: "14:15",
     },
@@ -85,7 +85,7 @@ export const appointments = [
         id_appointment: 4,
         service: "Consulta",
         doctor: "Dra. Nise da Silveira",
-        specialty: "Cirurgia Plástica",
+        speciality: "Cirurgia Plástica",
         booking_date: "2024-11-18",
         booking_hour: "11:00",
     },
@@ -93,7 +93,7 @@ export const appointments = [
         id_appointment: 5,
         service: "Consulta",
         doctor: "Dr. Antônio Almeida Souza",
-        specialty: "Pediatria",
+        speciality: "Pediatria",
         booking_date: "2024-12-02",
         booking_hour: "10:40",
     },
@@ -101,7 +101,7 @@ export const appointments = [
         id_appointment: 6,
         service: "Consulta",
         doctor: "Dra. Roberta Martins",
-        specialty: "Clínica Geral",
+        speciality: "Clínica Geral",
         booking_date: "2024-12-14",
         booking_hour: "17:30",
     }
