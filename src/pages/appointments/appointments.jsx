@@ -1,5 +1,5 @@
 import Navbar from "../../components/navbar/navbar.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { doctors, appointments } from "../../constants/data.js";
 import Appointment from "../../components/appointments/appointments.jsx";
 import "./appointments.css";
@@ -7,8 +7,10 @@ import "./appointments.css";
 
 function Appointments(){
 
+    const navigate = useNavigate();
+
     function ClickEdit(id_appointment){
-        console.log('Editar ' + id_appointment);
+        navigate("/appointments/edit/" + id_appointment);
     }
 
     function ClickDelete(id_appointment){
