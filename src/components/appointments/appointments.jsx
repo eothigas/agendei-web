@@ -11,17 +11,17 @@ function Appointment(props) {
         <td>
             {new Intl.DateTimeFormat('pt-BR',{dateStyle: "short"}).format(dt)
                 }</td>
-        <td className="text-end">{new Intl.NumberFormat('pt-BR', {style: "currency", currency: "BRL"}).format(props.price)
-                }</td>
+        <td className="text-end">{new Intl.NumberFormat('pt-BR', 
+                { style: "currency", currency: "BRL" }).format(props.price)}</td>
         <td className="text-end">
 
-            <div className="d-inline me-3">
-                <button className="btn btn-sm btn-primary">
-                    <i className="bi bi-pencil-square">Editar</i>
+            <div className="d-inline">
+                <button onClick={() => props.clickEdit(props.id_appointment)} className="btn btn-sm btn-primary me-3">
+                    <i className="bi bi-pencil-square"></i>
                 </button>
 
-                <button className="btn btn-sm btn-danger">
-                    <i className="bi bi-trash">Excluir</i>
+                <button onClick={() => props.clickDelete(props.id_appointment)} className="btn btn-sm btn-danger">
+                    <i className="bi bi-trash"></i>
                 </button>
             </div>  
         </td>

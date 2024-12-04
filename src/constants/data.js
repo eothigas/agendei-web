@@ -64,6 +64,8 @@ export const appointments = [
         speciality: "Cirurgia Plástica",
         booking_date: "2024-10-25",
         booking_hour: "08:30",
+        price: 1000,
+        user: 'Thiago'
     },
     {
         id_appointment: 2,
@@ -72,6 +74,8 @@ export const appointments = [
         speciality: "Pediatria",
         booking_date: "2024-10-28",
         booking_hour: "15:40",
+        price: 700,
+        user: 'Thiago'
     },
     {
         id_appointment: 3,
@@ -80,6 +84,8 @@ export const appointments = [
         speciality: "Clínica Geral",
         booking_date: "2024-11-05",
         booking_hour: "14:15",
+        price: 100,
+        user: 'Thiago'
     },
     {
         id_appointment: 4,
@@ -88,6 +94,8 @@ export const appointments = [
         speciality: "Cirurgia Plástica",
         booking_date: "2024-11-18",
         booking_hour: "11:00",
+        price: 450,
+        user: 'Thiago'
     },
     {
         id_appointment: 5,
@@ -96,6 +104,8 @@ export const appointments = [
         speciality: "Pediatria",
         booking_date: "2024-12-02",
         booking_hour: "10:40",
+        price: 350,
+        user: 'Thiago'
     },
     {
         id_appointment: 6,
@@ -104,6 +114,8 @@ export const appointments = [
         speciality: "Clínica Geral",
         booking_date: "2024-12-14",
         booking_hour: "17:30",
+        price: 200,
+        user: 'Thiago'
     }
 ]
 
@@ -111,7 +123,7 @@ export const doctors_services = [
     {
         id_service: 1,
         description: "Consulta Médica",
-        price: 499.99
+        price: 500
     },
     {
         id_service: 2,
