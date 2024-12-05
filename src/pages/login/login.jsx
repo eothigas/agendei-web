@@ -13,23 +13,37 @@ function Login(){
     const [msg, setMsg] = useState("");
 
     async function ExecuteLogin() {
+        // Verifica se os campos email e senha estão preenchidos
+        if (!email || !password) {
+            setMsg("Por favor, preencha o email e a senha.");
+            // Esconde a mensagem após 2 segundos
+            setTimeout(() => setMsg(""), 3500);
+            return; // Interrompe a execução da função caso os campos não sejam preenchidos
+        }
+    
         try {
             const response = await api.post("/users/login", { 
                 email, 
                 password 
             });
-
     
             if (response.data) {
-                console.log("Login realizado com sucesso:", response.data);
-                // Exemplo: redirecionar o usuário
-                // navigate("/appointments");
+                localStorage.setItem('sessionToken', response.data.token);
+                localStorage.setItem('sessionId', response.data.id_user);
+                localStorage.setItem('sessionEmail', response.data.email);
+                localStorage.setItem('sessionName', response.data.name);
+
+                // Redireciona:
+                navigate("/appointments");
             } else {
                 console.log("Resposta inesperada:", response);
             }
     
         } catch (error) {
-            setMsg("Erro ao efetuar Login");
+            setMsg("Dados inválidos. Tente novamente!");
+            
+            // Esconde a mensagem após 2 segundos
+            setTimeout(() => setMsg(""), 3500);
     
             if (error.response) {
                 console.log("Erro na resposta do servidor:", error.response.data);
@@ -55,13 +69,16 @@ function Login(){
                 <h5 className="mb-4 text-secondary">Acesse sua conta</h5>
 
                 <div className="mb-4">
-                    <input className="form-control" 
-                        type="email" placeholder="Email" 
+                    <input 
+                        required 
+                        className="form-control" 
+                        type="email" 
+                        placeholder="Email" 
                         onChange={(e) => setEmail(e.target.value)}/>
                 </div>
 
                 <div className="mb-2">
-                    <input className="form-control"
+                    <input required className="form-control"
                         type="password" placeholder="Senha" 
                         onChange={(e) => setPassword(e.target.value)}/>
                 </div>
