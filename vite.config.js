@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0', // Escuta em todas as interfaces
-    port: 3002,       // Porta 3002
+    port: 3001,       // Porta 3002
   },
-});
+})
