@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 
 const app = express();
-const port = 3001; // Porta que você deseja usar
+const port = 3002; // Porta que você deseja usar
 
 // Servir os arquivos estáticos da pasta web/src
 app.use(express.static(path.join(__dirname, 'web/src')));
