@@ -1,18 +1,29 @@
 import express from 'express';
-import path from 'path';
+import cors from 'cors';
+import router from './routes.js';  // Presumo que você tenha seu arquivo de rotas
 
 const app = express();
-const port = 3002; // Porta que você deseja usar
 
-// Servir os arquivos estáticos da pasta web/src
-app.use(express.static(path.join(__dirname, 'web/src')));
+// Permite que a API aceite requisições de todas as origens
+// Você pode substituir '*' por um domínio específico para permitir apenas de origens específicas
+app.use(cors({
+  origin: 'http://18.230.206.19:3002',  // Permite todas as origens (cuidado com a segurança)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Permite métodos HTTP específicos
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Permite cabeçalhos específicos
+}));
 
-// Rota principal que serve o index.html
+// Middleware para permitir requisições com JSON
+app.use(express.json());
+
+// Usa suas rotas
+app.use(router);
+
+// Rota de teste
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'web/src', 'index.html'));
+  res.send('API funcionando!');
 });
 
-// Iniciar o servidor
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://18.230.206.19:${port}`);
+// Inicia o servidor na porta 3001
+app.listen(3002, () => {
+  console.log("Servidor rodando na porta: 3002");
 });
