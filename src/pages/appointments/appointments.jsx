@@ -1,13 +1,19 @@
 import Navbar from "../../components/navbar/navbar.jsx";
 import { Link, useNavigate } from "react-router-dom";
-import { doctors, appointments } from "../../constants/data.js";
 import Appointment from "../../components/appointments/appointments.jsx";
 import "./appointments.css";
-
+import { useEffect, useState } from "react";
+import api from "../../constants/api.js";
 
 function Appointments(){
 
     const navigate = useNavigate();
+    const [appointments, setAppointments] = useState([]);
+    const [doctors, setDoctors] = useState([]);
+    const [idDoctor, setIdDoctor] = useState("");
+    const [dtStart, setDtStart] = useState("");
+    const [dtEnd, setDtEnd] = useState("");
+
 
     function ClickEdit(id_appointment){
         navigate("/appointments/edit/" + id_appointment);
@@ -16,6 +22,61 @@ function Appointments(){
     function ClickDelete(id_appointment){
         console.log('Excluir ' + id_appointment);
     }
+
+    function ChangeDoctor(e) {
+        setIdDoctor(e.target.value);
+    }
+
+    async function LoadDoctors(){
+        try {
+            const response = await api.get("/doctors");
+        
+            if (response.data) {
+                setDoctors(response.data);
+            }
+
+        } catch (error) {
+            if (error.response?.data.error){
+                if (error.response.status == 401)
+                    return navigate("/");
+
+                alert(error.response?.data.error);
+            }
+            else 
+                alert("Erro ao listar médicos.");
+        }
+    }
+
+    async function LoadAppointments(){
+        try {
+            const response = await api.get("/admin/appointments", {
+                params: {
+                    id_doctor: idDoctor,
+                    dt_start: dtStart,
+                    dt_end: dtEnd
+                }
+            });
+        
+            if (response.data) {
+                setAppointments(response.data);
+            }
+
+        } catch (error) {
+            if (error.response?.data.error) {
+                if (error.response.status == 401)
+                    return navigate("/");
+                
+                alert(error.response?.data.error);
+            }
+            else 
+                alert("Erro ao carregar página. Tente novamente mais tarde.");
+        }
+    }
+
+    useEffect(() => {
+        LoadDoctors();
+        LoadAppointments();
+    }, []);
 
     return <div className="container-fluid mt-page">
         <Navbar />
@@ -30,18 +91,20 @@ function Appointments(){
             </div>
 
             <div className="d-flex justify-content-end align-items-center">
-                <input id='startDate' className="form-control" type="date"  />
+                <input onChange={(e) => setDtStart(e.target.value)} 
+                    id='startDate' className="form-control" type="date"  />
                 <span className="m-2">Até</span>
-                <input id='endDate' className="form-control" type="date"  />
+                <input onChange={(e) => setDtEnd(e.target.value)}
+                    id='endDate' className="form-control" type="date"  />
                 
                 <div className="form-control ms-3 me-3">
-                    <select name="doctor" id="doctor">
+                    <select name="doctor" id="doctor" value={idDoctor} onChange={ChangeDoctor}>
                         <option value="">Todos os médicos</option>
 
                         {
                             doctors.map((doc) => {
                                 return <option key={doc.id_doctor} 
-                                    value="{doc.id_doctor}">
+                                    value={doc.id_doctor}>
                                     {doc.name}
                                 </option>
                             })
@@ -50,13 +113,11 @@ function Appointments(){
                     </select>
                 </div>
 
-                <button className="btn btn-primary">
+                <button onClick={LoadAppointments} className="btn btn-primary" type='button'>
                     Filtrar
                 </button>
             </div>
 
-        
-            
         </div>
 
         <div>
